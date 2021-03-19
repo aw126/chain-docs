@@ -25,6 +25,7 @@ We officially support macOS, Windows and Linux only. Other platforms may work bu
 ::: tip Remarks:
 The following is the minimal setup to join Crypto.org Chain Mainnet. Furthermore, you may want to run full nodes as sentries (see Tendermint), restrict your validator connections to only connect to your full nodes, test secure storage of validator keys etc
 :::
+
 To simplify the following step, we will be using **Linux** for illustration. Binary for
 [Mac](https://github.com/crypto-org-chain/chain-main/releases/download/v1.1.0/chain-main_1.1.0_Darwin_x86_64.tar.gz) and [Windows](https://github.com/crypto-org-chain/chain-main/releases/download/v1.1.0/chain-main_1.1.0_Windows_x86_64.zip) are also available.
 ### Sept 1-a) Install `chain-maind` released binaries from github
@@ -129,7 +130,7 @@ Before kick-starting your node, we will have to configure your node so that it c
 ##############################[TODO]- seed,genesis - [TODO]##############################
 ### Step 2-3. (**Optional**) Enable STATE-SYNC
 
-This is an option step If you would like to build a node with complete blockchain data, jump to [Step 3](#step-3-run-everything).
+This is an optional step If you would like to build a node with complete blockchain data, jump to [Step 3](#step-3-run-everything).
 
 With  [STATE-SYNC](https://docs.tendermint.com/master/tendermint-core/state-sync.html)  your node will download data related to the head or near the head of the chain and verify the data. This leads to drastically shorter times for joining a network for validator. For **validator**, It will be amazingly fast to sync the near head of the chain and join the network.
 ::: warning CAUTION
@@ -207,7 +208,7 @@ Once the `chain-maind` has been configured, we are ready to start the node and s
   $ ./chain-maind start
 ```
 **OR**
-- _(Optional for Linux)_ If you would like to have it running at the background, you can start `chain-maind` with `systemd` service, e.g.:
+- _(Optional for Linux)_ If you would like to have it running in the background, you can start `chain-maind` with `systemd` service, e.g.:
 
 ```bash
   $ git clone https://github.com/crypto-org-chain/chain-main.git && cd chain-main
@@ -318,7 +319,7 @@ The validator is in the active validator set under the address  <YOUR_VALIDATOR_
 The validator is signing @ Block#<BLOCK_HEIGHT> 👍
 ```
 
-For those who are using tmkms in background([AWS](./testnet-aws-1click.html)/[Azure](./testnet-azure-1click.html) 1-click deployment are using tmkms), you should use `--bechpubkey` the consensus pubkey with prefix `crocnclconspub1....` directly instead of `--pubkey` tendermint pubkey since the node is not using `~/.chain-maind/config/priv_validator_key.json` for signing.
+For those who are using tmkms in the background([AWS](./testnet-aws-1click.html)/[Azure](./testnet-azure-1click.html) 1-click deployment are using tmkms), you should use `--bechpubkey` the consensus pubkey with prefix `crocnclconspub1....` directly instead of `--pubkey` tendermint pubkey since the node is not using `~/.chain-maind/config/priv_validator_key.json` for signing.
 
 ```bash
 $ curl -sSL https://raw.githubusercontent.com/crypto-com/chain-docs/master/docs/getting-started/assets/signature_checking/check-validator-up.sh | bash -s -- \
@@ -409,7 +410,7 @@ confirm transaction before signing and broadcasting [y/N]: y
 
 ::: tip
 
-- Once your funds were unbonded, It will be locked until the `unbonding_time` has passed.
+- Once your funds were unbonded, they will be locked until the `unbonding_time` has passed.
 
 :::
 
